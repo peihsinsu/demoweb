@@ -3,4 +3,4 @@ steps:
   args: ['get', 'pods']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-b'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=ec2-cluster'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=demo-cluster'
