@@ -1,0 +1,3 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'gcloud', 'compute', 'instances', 'list' ]
