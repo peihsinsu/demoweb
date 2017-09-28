@@ -3,7 +3,7 @@ steps:
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME', '.']
   id: 'build'
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['get', 'pods']
+  args: ['set', 'image', "deployment/demoweb", "demoweb=gcr.io/$PROJECT_ID/demoweb:$TAG_NAME"]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=demo-cluster'
