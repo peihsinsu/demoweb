@@ -1,9 +1,12 @@
 VER=lastet
+PROJECT_ID=mitac-simonsu-2017
+IMAGE_NAME=demoweb
+IMAGE_URL=gcr.io/$(PROJECT_ID)/$(IMAGE_NAME)
 
 docker-build:
-	docker build -t peihsinsu/demoweb:$(VER) .
+	docker build -t $(IMAGE_URL) .
 docker-push:
-	docker push peihsinsu/demoweb:$(VER)
+	docker push $(IMAGE_URL))
 
 all: docker-build docker-push
 
