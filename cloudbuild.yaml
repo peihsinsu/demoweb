@@ -1,11 +1,21 @@
+timeout: 1800s
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME', '.']
-  id: 'build'
+  id: 'build-gcr'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME']
+  id: 'push-gcr'
+- name: 'peihsinsu/g8'
+  args: ['g8','deploy','app.yaml','--dry']
+  id: 'g8'
+- name: 'peihsinsu/g8'
+  args: ['ls']
+  id: 'ls-pwd'
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['set', 'image', "deployment/demoweb", "demoweb=gcr.io/$PROJECT_ID/demoweb:$TAG_NAME"]
+  args: ["apply","-f","g8/deployment.yaml"]
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-b'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=demo-cluster'
-  wait_for: ['build']
-images: ['gcr.io/$PROJECT_ID/demoweb:$TAG_NAME']
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=k8s-184'
+  waitFor:
+  - 'g8'

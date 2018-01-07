@@ -1,0 +1,14 @@
+project: simon-lab
+application: demoweb 
+port: 80
+domain: simondemo.githubhero.com
+
+automatic_scaling:
+  min: 1
+  max: 1
+  cpu: 80
+
+env_variables:
+  MODE: "production"
+
+cmd: ["npm","start"]
