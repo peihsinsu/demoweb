@@ -12,4 +12,4 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=k8s-184'
   waitFor:
-  - 'g8'
+  - 'push-gcr'
