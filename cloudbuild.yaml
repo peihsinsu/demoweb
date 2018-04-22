@@ -10,6 +10,6 @@ steps:
   args: ["apply","-f","k8s"]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=k8s-184'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=demo'
   waitFor:
   - 'push-gcr'
