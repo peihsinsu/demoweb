@@ -6,14 +6,8 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME']
   id: 'push-gcr'
-- name: 'peihsinsu/g8'
-  args: ['g8','deploy','app.yaml','--image-url=gcr.io/$PROJECT_ID/demoweb:$TAG_NAME','--dry']
-  id: 'g8'
-- name: 'peihsinsu/g8'
-  args: ['ls']
-  id: 'ls-pwd'
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ["apply","-f","g8/deployment.yaml"]
+  args: ["apply","-f","k8s"]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=k8s-184'

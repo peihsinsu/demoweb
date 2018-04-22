@@ -1,7 +1,7 @@
 project: simon-lab
 application: demoweb 
 port: 80
-domain: simondemo.githubhero.com
+domain: simondemo.arecord.us
 
 automatic_scaling:
   min: 1
