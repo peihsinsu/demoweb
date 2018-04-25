@@ -7,7 +7,7 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME']
   id: 'push-gcr'
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ["apply","-f","k8s"]
+  args: ["set","image","deployment/demoweb","demoweb=gcr.io/$PROJECT_ID/demoweb:$TAG_NAME"]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=demo'
