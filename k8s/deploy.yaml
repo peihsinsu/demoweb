@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: demoweb
-        image: gcr.io/simon-lab/demoweb:v20180423-001
+        image: gcr.io/simon-lab/demoweb:v20180530-001
         env:
         - name: PORT
           value: "80"
