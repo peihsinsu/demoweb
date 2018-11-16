@@ -2,7 +2,7 @@
 
 ## Clone me to CloudShell
 
-[![button](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/peihsinsu/demoweb&working_dir=app&page=shell&tutorial=README.md)
+[![button(http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/peihsinsu/demoweb&working_dir=app&page=shell&tutorial=README.md)
 
 
 ## Test from local
