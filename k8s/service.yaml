@@ -2,8 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: demoweb
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: demoweb.arecord.us
 spec:
   selector:
     app: demoweb
@@ -11,5 +9,5 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-  type: ClusterIP
+  type: NodePort
 
