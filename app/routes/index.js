@@ -7,14 +7,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.all('/test', function(req, res, next){
-    res.send({
+   var output = { 
         url: req.url,
 		    remote_url: req.connection.remoteAddress,
         method: req.method,
 		    header: req.headers,
         body: req.body,
         q: req.query
-    })
+    };
+   console.log(output);
+   res.send(output);
 });
 
 module.exports = router;
