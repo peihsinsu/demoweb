@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1 
+kind: Deployment
+metadata:
+  name: demoweb 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demoweb 
+    spec:
+      containers:
+      - name: demoweb
+        image: peihsinsu/demoweb
+        env:
+        - name: PORT
+          value: "80"
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            # when "host" is not defined, "PodIP" will be used
+            # host: my-host
+            # when "scheme" is not defined, "HTTP" scheme will be used. Only "HTTP" and "HTTPS" are allowed
+            # scheme: HTTPS
+            path: /test
+            port: 80
+            httpHeaders:
+            - name: X-Custom-Header
+              value: Awesome
+          initialDelaySeconds: 15
+          timeoutSeconds: 1

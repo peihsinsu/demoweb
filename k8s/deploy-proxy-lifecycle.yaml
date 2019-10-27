@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta1 
+kind: Deployment
+metadata:
+  name: demoweb 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demoweb 
+    spec:
+      containers:
+      - name: proxy-demoweb
+        image: peihsinsu/demoweb-proxy:v20191027.02
+        ports:
+        - containerPort: 80 
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","nginx -s quit; while killall -0 nginx; do sleep 1; done"]
+      - name: demoweb
+        image: peihsinsu/demoweb
+        resources:
+          requests:
+            cpu: "150m"
+        env:
+        - name: PORT
+          value: "3000"
+        ports:
+        - containerPort: 3000
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","while killall -0 node; do sleep 1; done"]
