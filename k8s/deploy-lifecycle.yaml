@@ -12,6 +12,10 @@ spec:
       containers:
       - name: demoweb
         image: peihsinsu/demoweb
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "150m"
         env:
         - name: PORT
           value: "80"

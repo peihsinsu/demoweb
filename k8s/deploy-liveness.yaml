@@ -12,11 +12,24 @@ spec:
       containers:
       - name: demoweb
         image: peihsinsu/demoweb
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "200m"
         env:
         - name: PORT
           value: "80"
         ports:
         - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /test
+            port: 80
+            httpHeaders:
+            - name: X-Custom-Header
+              value: Awesome
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
         livenessProbe:
           httpGet:
             # when "host" is not defined, "PodIP" will be used
