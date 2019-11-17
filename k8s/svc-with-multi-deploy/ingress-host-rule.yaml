@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demoweb
+spec:
+  rules:
+  - host: "*.arecord.us"
+    http:
+      paths:
+      - backend:
+          serviceName: demoweb 
+          servicePort: 80
+        path: /test
+      - backend:
+          serviceName: nginx 
+          servicePort: 80

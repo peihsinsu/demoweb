@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1 
+kind: Deployment
+metadata:
+  name: demoweb2
+  labels:
+    app: demoweb
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoweb 
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: demoweb
+        version: v2
+    spec:
+      containers:
+      - name: demoweb
+        image: peihsinsu/demoweb
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 200m
+        env:
+        - name: PORT
+          value: "80"
+        - name: VERSION
+          value: "v2"
+        ports:
+        - containerPort: 80
