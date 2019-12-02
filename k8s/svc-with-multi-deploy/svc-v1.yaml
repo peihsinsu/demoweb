@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demoweb-v1
+spec:
+  selector:
+    app: demoweb
+    version: v1
+  ports:
+  - protocol: TCP
+    name: http
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+
