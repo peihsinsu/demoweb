@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: demoweb
 spec:
-  backend:
-    serviceName: demoweb
-    servicePort: 80
+  defaultBackend:
+    service:
+      name: demoweb 
+      port:
+        number: 80
