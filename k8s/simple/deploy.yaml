@@ -4,6 +4,9 @@ metadata:
   name: demoweb 
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: demoweb
   template:
     metadata:
       labels:

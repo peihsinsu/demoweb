@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+#    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+metadata:
+  name: nginx 
+spec:
+  backend:
+    serviceName: nginx 
+    servicePort: 80
