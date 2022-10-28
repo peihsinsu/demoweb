@@ -1,0 +1,2 @@
+config:
+  demoweb: /appCfg.yaml

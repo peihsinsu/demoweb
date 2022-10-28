@@ -1,0 +1,18 @@
+service:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+
+configmap:
+  envConfig: true
+
+liveness:
+  httpGet:
+    path: /
+    port: 80
+
+readiness:
+  httpGet:
+    path: /
+    port: 80
